@@ -55,7 +55,7 @@ export const ensureStatusRange = (
 ) => (
    httpResponse: HttpResponse
 ): E.Either<HttpResponseStatusError, HttpResponse> =>
-   httpResponse.status <= minInclusive && httpResponse.status >= maxInclusive
+   httpResponse.status >= minInclusive && httpResponse.status < maxInclusive
       ? E.right(httpResponse)
       : E.left(
            httpResponseStatusError(
